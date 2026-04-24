@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+Use App\Http\Controllers\Api\ProjectResource;
 class ProjectController extends Controller
 {
     /**
@@ -11,7 +12,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        return ProjectResource::collection(Project::all());
     }
 
     /**
@@ -19,7 +20,13 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validated();
+
+    Project::create($validated);
+
+    return response()->json([
+        'message' => 'Project created successfully'
+    ]);
     }
 
     /**

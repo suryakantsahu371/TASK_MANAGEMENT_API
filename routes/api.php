@@ -17,5 +17,4 @@ route::middleware('auth:sanctum')-> group(function(){
 
       route::apiResource('projects',ProjectController::class);
       route::apiResource('tasks', TaskController::class);
-}); 
-
+});
